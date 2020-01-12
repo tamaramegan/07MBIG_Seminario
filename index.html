@@ -1,19 +1,44 @@
 <h2> Nombre: Tamara Huete Stauffer </h2>
 <h1>Visualización  Seminario </h1>
-<h3>Url: <a href="https://js-sbnxww.stackblitz.io">https://js-sbnxww.stackblitz.io </a></h3>
+<h3>Url: <a href="https://js-2apij4.stackblitz.io">https://js-2apij4.stackblitz.io </a></h3>
 <br>
 <h2> 1. Base de datos </h2>
 La base de datos original utilizada proviene de 
-<h2> 2. Identificar los elementos de la Visualización </h2>
-<h3>Audiencia: </h3>
-<h3>Objetivo: </h3>
-<h3>Mensaje: </h3>
+<a href = "https://firms.modaps.eosdis.nasa.gov/active_fire/viirs/shapes/zips/VNP14IMGTDL_NRT_Global_24h.zip">https://firms.modaps.eosdis.nasa.gov/active_fire/viirs/shapes/zips/VNP14IMGTDL_NRT_Global_24h.zip</a>
+Se trata de datos del satélite VIIRS (Visible Infrared Imaging Radiometer Suite) que se utiliza para detectar en casi en tiempo real incendios en todo el planeta. Para ello, el satélite detecta valores de infra-rojo que sean más elevados que los valores del background. En este caso, se han utilizado los valores del 11 de enero de 2020.
+Los datos originales se han modificado en R para hacer una instersección con los contornos de las fronteras y poder identificar qué fuegos pertenecen a cada país. 
+
+<h2> 2. Identificación de los elementos de la Visualización </h2>
+<h3>Audiencia: </h3> 
+Esta visualización está pensada para un público general, pero principalemente para personas interesadas en el medio ambiente, las consecuencias del cambio global y la deforestación.
+<h3>Objetivo: </h3> 
+Presentar datos objetivos de los incendios a nivel global. En los últimos meses, tanto Brasil como Australia se han llevado mucha atención mediática sobre la deforestación de sus bosques, mientras que se ha hablado muy poco de los incendios en Africa. Con esta base de datos se puede observar que el problema de la deforestación existe también en Africa aunque no se mencione en ningún medio
+<h3>Mensaje:</h3>
+La forma de transmitir esta información se va a realizar mediante una serie de figuras estáticas realizadas con diferentes herramientas de visualización y presentadas en una página html y un documento pdf.
 
 <h2> 3. Presentación </h2>
-<h2> 4. Tipo de gráficos utilizados </h2>
-<h2> 5. Justificación de las herramientas </h2>
-
-<h2> 1. Visualización con Google Sheets </h2>
-<h3>1A) Gráfico de sectores de emisiones de CO2 </h3>
-<iframe width="600" height="371" seamless frameborder="0" scrolling="no" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQef8-RnkROykCQOguBGhb3hCn2LnRs4wxxeCECP-nDYMFRVkpvXRcNuAviuA682TWRg1np3FTb1maL/pubchart?oid=2084305340&amp;format=interactive"></iframe>
+<h3> 3A. Fuegos activos por país </h3>
+Se muestra una figura compuesta realizada con Tableau. La primera figura (izquierda) es un mapa de los países donde se han detectado al menos 100 fuegos activos. El tamaño de los puntos es proporcional número de fuegos localizados en un país, que además aparecen con colores diferentes. La segunda figura (derecha) es un gráfico de burbujas donde el tamaño es proporcional al número de fuegos detectados en cada país. Las dos imágenes están unidas, de forma que al pinchar sobre una burbuja de la izquierda, aparece la localización en el mapa. Se ha elegido aquí un mapa porque la base de datos trata datos espaciales y de esta forma se puede visualizar la distribución de los datos. Sin embargo, al haber tantos países, el mapa queda bastante pequeño y por eso se ha optado por añadir el gráfico de burbujas, donde queda muy claro cuáles son los países donde se han detectado más fuegos activos.Se ha elegido Tableau por su facilidad para trabajar con datos espaciales y por la posibilidad de linkear dos figuras.
 <br>
+<a href="https://ibb.co/vjYS6Df"><img src="https://i.ibb.co/HHdjfXR/Mapa-Tableau.png" alt="Mapa-Tableau" border="0"></a>
+<br>
+<a href="https://ibb.co/HzSqSB4"><img src="https://i.ibb.co/r6jHjF0/Mapa-Tableau-Sudan.png" alt="Mapa-Tableau-Sudan" border="0"></a>
+<h3> 3B. Fuegos activos por continente </h3>
+En esta figura (creada con Datawarapper) se muestran mediante un gráfico de sectores el porcentage de fuegos detectados en cada continente. Se puede observar que el 65% de los focos activos se encuentran en Africa. El gráfico de sectores se ha elegido aquí porque permite realizar una estimación de la importancia relativa de cada sector sobre el total. Es apropiado porque hay pocas categorías (6 continentes) y las diferencias se pueden apreciar bastante bien. En caso de tenr más categorías o valores similares, sería m'as adecuado un gráfico de barras para realizar comparciones más objetivas.
+<br>
+<iframe title="Active fires by continent (11/01/2020)" aria-label="Interactive pie chart" src="//datawrapper.dwcdn.net/QbAnU/1/" scrolling="no" frameborder="0" style="border: none;" width="723" height="478"></iframe>
+<br>
+
+<h3> 3C. Países con más fuegos activos </h3>
+En esta figura se muestran los fuegos activos agrupados por continentes, de forma que suman el número total de fuegos por continente. Además, están destacados en color los 10 países donde el número de fuegos es mayor a nivel global. Se tarta de un gráfico de barras agrupadas, ideal para poder identificar la contribución de cada categoría al valor final y además poder hacer comparaciones 9en este caso, entre continentes). Para este gráfico se ha utilizado R y el paquete de visualización ggplot.
+
+<a href="https://ibb.co/C8JhgqK"><img src="https://i.ibb.co/qj0kKzY/Stacked-bar-fires.png" alt="Stacked-bar-fires" border="0"></a>
+
+
+<h2> 4. Justificación de las herramientas </h2>
+Se han utilizado 3 herramientas: Datawrapper, Tableau y R.
+Datawrapper permite hacer figuras sencillas de forma rápida y compartirlas directamente desde la propia página.
+Tableau es una herramienta un poco más compleja que permite hacer gráficos más elaborados y sobretodo, pgestiona datos geoespaciales por lo que permite realizar mapas.
+R requiere más conocimiento que las anteriores pero permite manejar los datos de forma más precisa y hacer cálculos más complejos, como los requeridos en las barras agregadas con modificación de los colores en función de los 10 países con mayor número de fuegos.
+
+
